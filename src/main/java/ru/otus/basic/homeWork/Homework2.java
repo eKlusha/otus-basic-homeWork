@@ -1,4 +1,5 @@
 package ru.otus.basic.homeWork;
+
 import java.util.Scanner;
 import java.util.Arrays;
 
@@ -11,6 +12,9 @@ public class Homework2 {
         incrementNums(4, new int[]{3, 32, 1, 23, 45, 6, 7, 8, 4, 322, 212, 0, -501});
         halfs(new int[]{32, 56, 98, 1, 2, 3, 78, 65, 32, 0, -1, 2, 65, 77, 12});
         sumOfArrays(new int[]{2, 4, 5, 6, 2}, new int[]{5, 1, 5, 6}, new int[]{7, 5, 4});
+        increaseOrDescending(new int[]{1, 2, 3, 4, 5});
+        revers(new int[]{1, 2, 3, 4, 5});
+        point(new int[]{1, 1, 1, 1, 1, 5, 10, 20, 40, 80});
     }
 
     public static void str() {
@@ -107,6 +111,7 @@ public class Homework2 {
 
         }
         System.out.println(Arrays.toString(sumNumArray));
+        System.out.println();
 
 //    public static void changeArrays(int[] array, int[] newArray, int a) {
 //        System.arraycopy(array, 0, newArray, 0, a);
@@ -121,7 +126,91 @@ public class Homework2 {
         }
     }
 
-    public static void increaseOrDescending(int[] array){
+    public static void increaseOrDescending(int[] array) {
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Для запуска проверки на возростание элементов массива нажмите '1'\n" +
+                "Для заупска проверки на убывание элементов массива нажмите '2'");
+        int choice = scanner.nextInt();
+        int counterIncrease = 0;
+        int counterDescending = 0;
+        System.out.println(Arrays.toString(array));
+        if (choice == 1) {
+            for (int i = 0; i < array.length; i++) {
+                if (i == array.length - 1) {
+                    break;
+                } else if (array[i] < array[i + 1]) {
+                    counterIncrease++;
+                }
+            }
+            if (counterIncrease == array.length - 1) {
+                System.out.println("Элементы массива идут в порядке возростания");
+            } else {
+                System.out.println("Элементы массива не идут в порядке возростания");
+            }
+        } else if (choice == 2) {
+            for (int i = 0; i < array.length; i++) {
+                if (i == array.length - 1) {
+                    break;
+                } else if (array[i] > array[i + 1]) {
+                    counterDescending++;
+                }
+            }
+            if (counterIncrease == array.length - 1) {
+                System.out.println("Элементы массива идут в порядке убывания");
+            } else {
+                System.out.println("Элементы массива не идут в порядке убывания");
+            }
+        } else {
+            System.out.println("Недопустимое значение. Попробуйте ещё раз");
+        }
+        System.out.println();
+    }
+
+    public static void revers(int array[]) {
+        System.out.println(Arrays.toString(array));
+        int[] arrayHelper = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            arrayHelper[i] = array[i];
+
+        }
+        int memory = arrayHelper.length;
+        for (int i = 0; i < array.length; i++) {
+            int intHelper = 0;
+            while (intHelper == 0) {
+                intHelper++;
+                array[i] = arrayHelper[memory - 1];
+                memory--;
+            }
+        }
+        System.out.println(Arrays.toString(array));
+        System.out.println();
+    }
+
+    public static void point(int[] array) {
+        int sum1 = 0;
+        int sum2 = array[0];
+        System.out.println(Arrays.toString(array));
+        for (int i = 1; i < array.length; i++) {
+            sum1 += array[i];
+        }
+        for (int i = 1; i < array.length; i++) {
+            int intHelper = 0;
+            while (intHelper == 0) {
+                intHelper++;
+                if (sum1 == sum2) {
+                    System.out.println("Точка, в которой суммы правой и левой частей элементов массива равны," +
+                            "находится между элементами" + i + " и " + (i + 1));
+                    break;
+                } else {
+                    sum1 -= array[i];
+                    sum2 += array[i];
+                    System.out.println(sum1 + " " + sum2);
+                }
+            }
+        }
+        if (sum1 != sum2) {
+            System.out.println("Нет точка, в которой суммы правой и левой частей элементов массива равны");
+        }
     }
 }
