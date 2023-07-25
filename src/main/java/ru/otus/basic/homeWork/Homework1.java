@@ -2,7 +2,7 @@ package ru.otus.basic.homeWork;
 
 import java.util.Scanner;
 
-public class homeWork1 {
+public class Homework1 {
 
 
     public static void main(String[] args) {
