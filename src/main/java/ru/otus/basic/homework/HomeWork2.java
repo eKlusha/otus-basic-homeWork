@@ -1,9 +1,9 @@
-package ru.otus.basic.homeWork;
+package ru.otus.basic.homework;
 
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class Homework2 {
+public class HomeWork2 {
     public static void main(String[] args) {
         printStrings(5);
         int[] array1 = {23, 1, 5, 3, 8, 0, -1, 6, 3, 1, 0, 8, -5, 9, 4};
@@ -17,13 +17,9 @@ public class Homework2 {
         point(new int[]{1, 1, 1, 1, 1, 5, 10, 20, 40, 80});
     }
 
-    public static void str() {
-        System.out.println("Текст для печати");
-    }
-
-    public static void printStrings(int a) {
-        for (int i = 0; i < a; i++) {
-            str();
+    public static void printStrings(int counter) {
+        for (int i = 0; i < counter; i++) {
+            System.out.println("Текст для печати");
 
         }
         System.out.println();
@@ -136,10 +132,8 @@ public class Homework2 {
         int counterDescending = 0;
         System.out.println(Arrays.toString(array));
         if (choice == 1) {
-            for (int i = 0; i < array.length; i++) {
-                if (i == array.length - 1) {
-                    break;
-                } else if (array[i] < array[i + 1]) {
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] < array[i] + 1) {
                     counterIncrease++;
                 }
             }
@@ -149,10 +143,8 @@ public class Homework2 {
                 System.out.println("Элементы массива не идут в порядке возростания");
             }
         } else if (choice == 2) {
-            for (int i = 0; i < array.length; i++) {
-                if (i == array.length - 1) {
-                    break;
-                } else if (array[i] > array[i + 1]) {
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i] + 1) {
                     counterDescending++;
                 }
             }
@@ -172,16 +164,12 @@ public class Homework2 {
         int[] arrayHelper = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             arrayHelper[i] = array[i];
-
         }
         int memory = arrayHelper.length;
         for (int i = 0; i < array.length; i++) {
-            int intHelper = 0;
-            while (intHelper == 0) {
-                intHelper++;
-                array[i] = arrayHelper[memory - 1];
-                memory--;
-            }
+
+            array[i] = arrayHelper[memory - 1];
+            memory--;
         }
         System.out.println(Arrays.toString(array));
         System.out.println();
@@ -195,18 +183,14 @@ public class Homework2 {
             sum1 += array[i];
         }
         for (int i = 1; i < array.length; i++) {
-            int intHelper = 0;
-            while (intHelper == 0) {
-                intHelper++;
-                if (sum1 == sum2) {
-                    System.out.println("Точка, в которой суммы правой и левой частей элементов массива равны," +
-                            "находится между элементами " + i + " и " + (i + 1));
-                    break;
-                } else {
-                    sum1 -= array[i];
-                    sum2 += array[i];
-                    System.out.println(sum1 + " " + sum2);
-                }
+            if (sum1 == sum2) {
+                System.out.println("Точка, в которой суммы правой и левой частей элементов массива равны," +
+                        "находится между элементами " + i + " и " + (i + 1));
+                break;
+            } else {
+                sum1 -= array[i];
+                sum2 += array[i];
+                System.out.println(sum1 + " " + sum2);
             }
         }
         if (sum1 != sum2) {
