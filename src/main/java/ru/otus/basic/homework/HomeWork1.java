@@ -1,8 +1,8 @@
-package ru.otus.basic.homeWork;
+package ru.otus.basic.homework;
 
 import java.util.Scanner;
 
-public class Homework1 {
+public class HomeWork1 {
 
 
     public static void main(String[] args) {
