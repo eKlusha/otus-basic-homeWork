@@ -22,10 +22,18 @@ public class HomeWork4 {
                 System.out.println();
             }
         }
-        Box box1 = new Box(300,400,200,"black",true,true);
-        box1.boxInfo();
-
+        Box box1 = new Box(300, 400, 200, "black", true, true);
+        box1.info();
+        box1.setColor("green");
+        box1.info();
+        box1.put();
+        box1.closed();
+        box1.take();
+        box1.open();
+        box1.info();
+        box1.take();
+        box1.info();
+        box1.closed();
+        System.out.println(box1.getSIZE_X() +" мм\n" + box1.getSIZE_Y() + " мм\n" + box1.getSIZE_Z() + " мм\n" + box1.getColor() );
     }
 }
-
-
